@@ -7,7 +7,7 @@ Collecting errors validation ADT using Witchcraft.
 ```elixir
 def deps do
   [
-    {:exvalid, "~> 0.2.0"}
+    {:exvalid, "~> 0.3.0"}
   ]
 end
 ```
