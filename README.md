@@ -19,25 +19,30 @@ end
 
 ```
 use ExValid
+alias Validate.{Valid, Invalid}
+import Quark.Curry, only: [curry: 1]
 
 defmodule User do
   defstruct email: nil, name: nil
 end
 
 # And Elixir doesn't have currying by default, so ...
-map2 = Quark.Curry.curry(fn fa, fb, f -> of(%Validate.Valid{}, f) |> ap(fa) |> ap(fb) end)
+map2 = fn fa, fb, f -> of(%Valid{}, f) |> ap(fa) |> ap(fb) end |> curry
+f = fn email, name -> %User{email: email, name: name} end |> curry
 
 validate_email =
   fn user ->
-    if user.email, do: Validate.Valid.new(user.email), else: Validate.Invalid.new("Email missing.")
+    if user.email,
+      do: Valid.new(user.email),
+      else: Invalid.new("Email missing.")
   end
 
 validate_name =
   fn user ->
-    if user.name, do: Validate.Valid.new(user.name), else: Validate.Invalid.new("Name missing.")
+    if user.name,
+      do: Valid.new(user.name),
+      else: Invalid.new("Name missing.")
   end
-
-f = Quark.Curry.curry(fn email, name -> %User{email: email, name: name} end)
 
 user = %User{}
 map2.(validate_email.(user)).(validate_name.(user)).(f)
