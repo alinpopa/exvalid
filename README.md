@@ -17,7 +17,7 @@ end
 
 ## Usage
 
-```
+```elixir
 use ExValid
 alias Validate.{Valid, Invalid}
 import Quark.Curry, only: [curry: 1]
