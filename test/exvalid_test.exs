@@ -14,15 +14,11 @@ defmodule ExValidTest do
     map2 = fn fa, fb, f -> of(%Valid{}, f) |> ap(fa) |> ap(fb) end |> curry
 
     validate_email = fn user ->
-      if user.email,
-        do: Valid.new(user.email),
-        else: Invalid.new("Email missing.")
+      if user.email, do: Valid.new(user.email), else: Invalid.new("Email missing.")
     end
 
     validate_name = fn user ->
-      if user.name,
-        do: Valid.new(user.name),
-        else: Invalid.new("Name missing.")
+      if user.name, do: Valid.new(user.name), else: Invalid.new("Name missing.")
     end
 
     user = %User{}
@@ -36,15 +32,11 @@ defmodule ExValidTest do
     map2 = fn fa, fb, f -> of(%Valid{}, f) |> ap(fa) |> ap(fb) end |> curry
 
     validate_email = fn user ->
-      if user.email,
-        do: Valid.new(user.email),
-        else: Invalid.new("Email missing.")
+      if user.email, do: Valid.new(user.email), else: Invalid.new("Email missing.")
     end
 
     validate_name = fn user ->
-      if user.name,
-        do: Valid.new(user.name),
-        else: Invalid.new("Name missing.")
+      if user.name, do: Valid.new(user.name), else: Invalid.new("Name missing.")
     end
 
     user = %User{email: "x@y.z"}
@@ -58,15 +50,11 @@ defmodule ExValidTest do
     map2 = fn fa, fb, f -> of(%Valid{}, f) |> ap(fa) |> ap(fb) end |> curry
 
     validate_email = fn user ->
-      if user.email,
-        do: Valid.new(user.email),
-        else: Invalid.new("Email missing.")
+      if user.email, do: Valid.new(user.email), else: Invalid.new("Email missing.")
     end
 
     validate_name = fn user ->
-      if user.name,
-        do: Valid.new(user.name),
-        else: Invalid.new("Name missing.")
+      if user.name, do: Valid.new(user.name), else: Invalid.new("Name missing.")
     end
 
     user = %User{name: "A.B. Sea"}
@@ -80,15 +68,11 @@ defmodule ExValidTest do
     map2 = fn fa, fb, f -> of(%Valid{}, f) |> ap(fa) |> ap(fb) end |> curry
 
     validate_email = fn user ->
-      if user.email,
-        do: Valid.new(user.email),
-        else: Invalid.new("Email missing.")
+      if user.email, do: Valid.new(user.email), else: Invalid.new("Email missing.")
     end
 
     validate_name = fn user ->
-      if user.name,
-        do: Valid.new(user.name),
-        else: Invalid.new("Name missing.")
+      if user.name, do: Valid.new(user.name), else: Invalid.new("Name missing.")
     end
 
     user = %User{name: "A.B. Sea", email: "x@y.z"}
