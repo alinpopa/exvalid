@@ -14,7 +14,11 @@ defmodule Exvalid.MixProject do
         {:witchcraft, "~> 1.0"}
       ],
       name: "ExValid",
-      source_url: "https://github.com/alinpopa/exvalid"
+      source_url: "https://github.com/alinpopa/exvalid",
+      docs: [
+        extras: ["README.md"],
+        main: "readme"
+      ]
     ]
   end
 
