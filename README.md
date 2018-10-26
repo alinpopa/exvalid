@@ -1,13 +1,13 @@
 # ExValid
 
-Collecting errors validation ADT using Witchcraft.
+Applicative powered Validation ADT, with a dash of Witchcraft.
 
 ## Installation
 
 ```elixir
 def deps do
   [
-    {:exvalid, "~> 0.3.0"}
+    {:exvalid, "~> 0.4.0"}
   ]
 end
 ```

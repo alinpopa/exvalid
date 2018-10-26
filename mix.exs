@@ -4,7 +4,7 @@ defmodule Exvalid.MixProject do
   def project do
     [
       app: :exvalid,
-      version: "0.3.0",
+      version: "0.4.0",
       elixir: "~> 1.7",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -28,7 +28,7 @@ defmodule Exvalid.MixProject do
   end
 
   defp description() do
-    "Collecting errors validation ADT using Witchcraft."
+    "Applicative powered Validation ADT, with a dash of Witchcraft."
   end
 
   defp package() do
