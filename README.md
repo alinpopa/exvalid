@@ -4,13 +4,10 @@ Collecting errors validation ADT using Witchcraft.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `exvalid` to your list of dependencies in `mix.exs`:
-
 ```elixir
 def deps do
   [
-    {:exvalid, "~> 0.1.0"}
+    {:exvalid, "~> 0.2.0"}
   ]
 end
 ```
