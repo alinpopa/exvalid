@@ -15,6 +15,9 @@ defmodule ExValid.Validate do
     def new(data) when is_list(data), do: %Invalid{invalid: data}
     def new(data), do: %Invalid{invalid: [data]}
   end
+
+  def valid(data), do: Valid.new(data)
+  def invalid(data), do: Invalid.new(data)
 end
 
 defimpl TypeClass.Property.Generator, for: Invalid do
@@ -35,6 +38,28 @@ defimpl TypeClass.Property.Generator, for: Valid do
   end
 end
 
+definst Witchcraft.Semigroup, for: Invalid do
+  custom_generator(_) do
+    1
+    |> TypeClass.Property.Generator.generate()
+    |> Invalid.new()
+  end
+
+  def append(invalid, %Valid{}), do: invalid
+  def append(%Invalid{invalid: e1}, %Invalid{invalid: e2}), do: %Invalid{invalid: e1 <> e2}
+end
+
+definst Witchcraft.Semigroup, for: Valid do
+  custom_generator(_) do
+    1
+    |> TypeClass.Property.Generator.generate()
+    |> Valid.new()
+  end
+
+  def append(_, invalid = %Invalid{}), do: invalid
+  def append(%Valid{valid: e1}, %Valid{valid: e2}), do: %Valid{valid: e1 <> e2}
+end
+
 definst Witchcraft.Functor, for: Invalid do
   def map(invalid, _), do: invalid
 end
@@ -46,8 +71,8 @@ end
 definst Witchcraft.Apply, for: Invalid do
   def convey(invalid = %Invalid{}, %Valid{}), do: invalid
 
-  def convey(%Invalid{invalid: e1}, %Invalid{invalid: e2}),
-    do: Invalid.new(e1 <> e2)
+  def convey(invalid1 = %Invalid{}, invalid2 = %Invalid{}),
+    do: invalid1 <> invalid2
 end
 
 definst Witchcraft.Apply, for: Valid do
